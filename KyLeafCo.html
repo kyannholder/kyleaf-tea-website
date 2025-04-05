@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KyLeaf & Co. | The Art of Tea</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="sticky-header">
+        <div class="logo">
+            <h1>KyLeaf & Co.</h1>
+            <p>The Art of Tea</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li> <!-- Added Login Link -->
+                <li><a href="#cart">Cart (<span id="cartCount">0</span>)</a></li> <!-- Cart Link -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <h2>Savor the Perfect Cup</h2>
+        <p>Explore our exquisite tea collection</p>
+        <a href="#shop" class="btn">Shop Now</a>
+    </section>
+
+    <!-- Featured Teas Section -->
+    <section id="shop" class="featured">
+        <h2>Our Finest Tea Selections</h2>
+        <div class="tea-grid">
+            <div class="tea">
+                <img src="https://i.pinimg.com/736x/eb/0d/49/eb0d493e029385a06cd49767ed304b42.jpg" alt="Organic Green Tea">
+                <h3>Organic Green Tea</h3>
+                <button class="add-to-cart" onclick="addToCart('Organic Green Tea')">Add to Cart</button>
+            </div>
+            <div class="tea">
+                <img src="https://i.pinimg.com/736x/25/55/23/25552366b5356730bf1e3d00d15724af.jpg" alt="Classic Black Tea">
+                <h3>Classic Black Tea</h3>
+                <button class="add-to-cart" onclick="addToCart('Classic Black Tea')">Add to Cart</button>
+            </div>
+            <div class="tea best-seller">
+                <img src="https://i.pinimg.com/736x/26/db/34/26db3446f64f6d6b8cf5e15a4efec8ca.jpg" alt="Bestseller">
+                <h3>Best Seller</h3>
+                <button class="add-to-cart" onclick="addToCart('Best Seller')">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Checkout Button -->
+        <button id="checkoutBtn" class="btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <h2>About KyLeaf & Co.</h2>
+        <p>Founded by Kyann Holder, KyLeaf & Co. is a premium tea company that brings the finest blends to your cup. With a passion for high-quality, organic teas, our mission is to offer a unique and unforgettable tea experience. From Organic Green Tea to Classic Black, we ensure that every tea leaves a lasting impression.</p>
+        <div class="team">
+            <h3>Meet the Founder & CEO</h3>
+            <img src="kyann-holder.jpg" alt="Kyann Holder, Founder & CEO" class="team-photo">
+            <p>Kyann Holder, the Founder and CEO of KyLeaf & Co., is an entrepreneur with a deep love for tea and sustainability. Kyann’s vision for KyLeaf & Co. is to bring quality, ethical tea to tea lovers around the world while promoting environmental sustainability and responsible sourcing.</p>
+        </div>
+        <div class="history">
+            <h3>Our History</h3>
+            <p>KyLeaf & Co. began with a passion for quality teas. After years of exploring the best tea plantations and learning about the intricate art of tea making, Kyann Holder decided to create a company that would bring the finest tea experience to customers globally. What started as a small venture in the Caribbean has now become a recognized name in the world of specialty teas.</p>
+        </div>
+        <div class="mission">
+            <h3>Our Mission</h3>
+            <p>At KyLeaf & Co., our mission is simple: to bring you the finest tea blends, crafted with love and care. We strive to create a culture of sustainability, innovation, and excellence in everything we do. Whether you're enjoying a cup of our Organic Green Tea or one of our specialty blends, our goal is to make every sip an experience.</p>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">
+            <p>"The best tea I’ve ever tasted! Aromatic, fresh, and simply delightful." – Sarah L.</p>
+        </div>
+        <div class="testimonial">
+            <p>"I love the variety and quality of teas KyLeaf & Co. offers!" – Jason M.</p>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? We'd love to hear from you!</p>
+        <form id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p id="responseMessage" class="hidden"></p>
+    </section>
+
+    <!-- Login Form -->
+    <section id="login" class="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p id="loginMessage" class="hidden"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 KyLeaf & Co. | All Rights Reserved</p>
+        <p>Follow us: <a href="#">Instagram</a> | <a href="#">Facebook</a></p>
+    </footer>
+
+    <!-- Cart Section -->
+    <section id="cart" class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cartItems"></ul>
+        <p>Total Items: <span id="cartTotal">0</span></p>
+    </section>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+
+        // Function to add items to the cart
+        function addToCart(itemName) {
+            cart.push(itemName);
+            updateCartDisplay();
+        }
+
+        // Function to update the cart display
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            cartCount.textContent = cart.length;
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                cartItems.appendChild(li);
+            });
+            cartTotal.textContent = cart.length;
+        }
+
+        // Function to handle checkout
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty! Please add items before proceeding.');
+            } else {
+                window.location.href = 'checkout.html'; // Redirect to the checkout page
+            }
+        }
+    </script>
+
+</body>
+</html>
