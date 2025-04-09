@@ -1,0 +1,96 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #fde4ea;
+    color: #333;
+}
+
+/* Sticky Header */
+.sticky-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #ffccd5;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.logo h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #7a3b69;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+nav ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #7a3b69;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover {
+    color: #d63384;
+}
+
+/* Hero Section */
+.hero {
+    padding: 100px 20px;
+    color: white;
+    background: url('images/hero-image.jpg') center/cover;
+}
+.hero h2 {
+    font-size: 42px;
+}
+.hero .btn {
+    padding: 12px 25px;
+    background-color: #d63384;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.hero .btn:hover {
+    background-color: #b21a6d;
+}
+
+/* Featured Teas */
+.tea-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.tea {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+}
+.tea img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 20px;
+    }
+    .tea-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
